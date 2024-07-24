@@ -1,0 +1,92 @@
+{
+  "current": {
+    "show_style_guide": true,
+    "social_instagram_link": "https:\/\/www.instagram.com\/carpetright_uk\/",
+    "social_facebook_link": "https:\/\/www.facebook.com\/Carpetright\/",
+    "social_pinterest_link": "https:\/\/www.pinterest.co.uk\/carpetright\/",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "title": "Announce something here",
+              "link": "",
+              "color_background": "#ffffff",
+              "color_text": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+          "timing": 4
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "secondary_menu": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "heading": ""
+        }
+      },
+      "temp-large-container": {
+        "type": "temp-large-container",
+        "settings": {
+        }
+      },
+      "temp-container": {
+        "type": "temp-container",
+        "settings": {
+        }
+      },
+      "temp-container-small": {
+        "type": "temp-container-small",
+        "settings": {
+        }
+      },
+      "temp-container-xs": {
+        "type": "temp-container-xs",
+        "settings": {
+        }
+      },
+      "temp-colours": {
+        "type": "temp-colours",
+        "settings": {
+        }
+      },
+      "temp-type": {
+        "type": "temp-type",
+        "settings": {
+        }
+      },
+      "temp-buttons": {
+        "type": "temp-buttons",
+        "settings": {
+        }
+      },
+      "temp-icons": {
+        "type": "temp-icons",
+        "settings": {
+        }
+      },
+      "temp-prose": {
+        "type": "temp-prose",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
+}

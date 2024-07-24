@@ -1,0 +1,18 @@
+<form x-data="{search:''}" action="{{ routes.search_url }}" method="get" role="search" class="w-full flex gap-4">
+   <button :type="search == '' ? 'button' : 'submit'" class="hover:text-aqua" aria-label="Search">
+      {% render 'icons', icon: 'search', class: 'w-5' %}
+   </button>
+   <div class="field relative flex items-center w-full text-black">
+      <input class="w-full px-4 py-2 rounded-lg relative body text-14 placeholder:opacity-60 bg-white"
+         type="search"
+         id="nav-search-input"
+         name="q"
+         value="{{ search.terms | escape }}"
+         placeholder="Search"
+         x-model="search"
+      >
+      <label class="sr-only" for="nav-search-input">Search</label>
+      <input name="options[prefix]" type="hidden" value="last">
+      <input type="hidden" name="type" value="product,article">
+   </div>
+</form>

@@ -1,0 +1,275 @@
+{%- capture burger -%}
+  <button class="header__menu-icon header__icon-touch header__icon-menu" aria-label="{{ 'general.accessibility.open_menu' | t }}" data-js-menu-button>
+    {% render 'icon-button' with icon: 'menu' %}
+  </button>
+{%- endcapture -%}
+
+<header 
+   class="bg-black text-white py-4 text-14"
+   x-data="{
+      cart_count: {{ cart.item_count }},
+      showMenu: false,
+   }"
+>
+   <div class="container-lg">
+      <div class="flex justify-between items-center">
+         <a href="/" class="sm:hidden">
+            {% render 'icons', icon: 'logo-teal', class: 'w-full max-w-[140px]' %}
+         </a>
+         <p class="hidden sm:block">
+            Order direct - 0330 333 3444
+         </p>
+         <div class="flex gap-6">
+            <a href="#" class="header-icon-link__anchor">
+               <span class="header-icon-link__icon">
+                  {% render 'icons', icon: 'heart', class: 'header-icon-link__icon-svg' %}
+               </span>
+               <span class="hidden md:block">
+                  Shortlist
+               </span>
+            </a>
+            <a href="#" class="header-icon-link__anchor">
+               <span class="header-icon-link__icon">
+                  {% render 'icons', icon: 'location-pin', class: 'header-icon-link__icon-svg' %}
+               </span>
+               <span class="hidden md:block">
+                  Stores
+               </span>
+            </a>
+            <a href="#" class="header-icon-link__anchor hidden md:block">
+               <span class="header-icon-link__icon">
+                  {% render 'icons', icon: 'circle-question', class: 'header-icon-link__icon-svg' %}
+               </span>
+               <span class="hidden md:block">
+                  Help
+               </span>
+            </a>
+            <a href="#" class="header-icon-link__anchor">
+               <span class="header-icon-link__icon">
+                  {% render 'icons', icon: 'user', class: 'header-icon-link__icon-svg' %}
+               </span>
+               <span class="hidden md:block">
+                  Login
+               </span>
+            </a>
+            <div class="xl:hidden">
+               {% render 'shopping-cart-icon' %}
+            </div>
+         </div>
+      </div>
+      <div class="flex justify-between items-center my-4 gap-12">
+         <div class="hidden sm:block flex-1">
+            <a href="/">
+               {% render 'icons', icon: 'logo-teal', class: 'w-full max-w-[214px]' %}
+            </a>
+         </div>
+         <div class="flex-2 flex justify-center sm:justify-end xl:justify-center">
+            <div class="max-w-[580px] w-full">
+               {% render 'search-input' %}
+            </div>
+         </div>
+         <div class="flex-1 hidden xl:flex justify-end">
+            <div class="flex items-center">
+               {% render 'shopping-cart-icon' %}
+            </div>
+         </div>
+      </div>
+      <div class="hidden md:flex mt-6">
+         <nav class="">
+            <ul class="flex gap-12">
+               {% for link in section.settings.menu.links %}
+                  <li class="">
+                     <a class="font-bold hover:text-aqua" href="{{ link.url }}">
+                        {{ link.title }}
+                     </a>
+                  </li>
+               {% endfor %}
+            </ul>
+         </nav>
+      </div>
+   </div>
+</header>
+
+{% liquid
+  assign menu = section.settings.menu
+  assign secondary_menu = section.settings.secondary_menu
+
+  assign links = linklists[menu].links
+  assign secondary_links = linklists[secondary_menu].links
+
+  if cart.item_count > 0
+    assign count_visible = true
+  endif
+%}
+
+
+
+
+{% capture search_settings %}
+  {
+    "limit": {{ settings.search_max_result_size | json }},
+    "show_articles": {{ settings.search_show_articles | json }},
+    "show_pages": {{ settings.search_show_pages | json }}
+  }
+{% endcapture %}
+
+{% if false %}
+<div class="header-wrapper">
+  <header
+    data-section-id="{{ section.id }}"
+    data-section-type="header"
+    {% if settings.enable_sticky_header %}
+      data-enable-sticky-header="true"
+    {% endif %}
+    class="
+      header
+      header--{{ style }}
+      header--{{ logo_position }}
+      header--navigation-{{ navigation_position }}
+      {% if logo != blank -%}
+        header--has-logo
+      {%- endif %}
+      {% if transparent_home and template.name == 'index' %}
+        header--transparent-home
+      {% endif %}
+      {% if logo_transparent != blank %}
+        header--has-transparent-logo
+      {% endif %}
+      {% if shop.customer_accounts_enabled -%}
+        header--has-accounts
+      {%- endif %}
+      {% if secondary_menu_valid -%}
+        header--has-secondary-menu
+      {%- endif %}
+      {% if menu == blank and secondary_menu != blank -%}
+        header--primary-menu-is-secondary
+      {%- endif %}
+    "
+    style="
+      --width-max-logo: {{ logo_max_width }}px;
+      --color-cart-count-transparent: {{ color_count_transparent }};
+      --color-text-transparent: {{ color_text_transparent }};
+      --color-icon-transparent: {{ color_icon_transparent }};
+      --color-border-transparent: {{ color_border_transparent | color_modify: 'alpha', border_opacity }};
+    "
+  >
+    <script type="application/json" data-search-settings>
+      {{ search_settings }}
+    </script>
+
+    <a href="#main" class="header__skip-top-content btn btn--primary btn--small">
+      {{ 'general.accessibility.skip_to_content' | t }}
+    </a>
+
+    <div class="header__inner">
+      <div class="header__left">
+        {%- if logo_position == 'center' and navigation_position == 'below' and style == 'inline' -%}
+          {{ burger }}
+          {{ search_icon }}
+        {%- elsif logo_position == 'left' and style == 'inline' and navigation_position != 'below' -%}
+          {{ header_logo }}
+          {{ burger }}
+          {{ nav }}
+        {%- elsif logo_position == 'left'
+          and style == 'inline'
+          and secondary_menu_valid
+          and navigation_position == 'below'
+        -%}
+          {{ burger }}
+          {{ header_logo }}
+        {%- elsif logo_position == 'left' and style == 'inline' and navigation_position == 'below' -%}
+          {{ burger }}
+          {{ header_logo }}
+        {%- elsif logo_position == 'left' and style == 'icon' -%}
+          {{ header_logo }}
+          {{ burger }}
+        {%- elsif logo_position == 'center' and style == 'inline' -%}
+          {{ burger }}
+          {{ nav }}
+        {%- elsif logo_position == 'center' and style == 'icon' -%}
+          {{ burger }}
+        {%- endif -%}
+      </div>
+      <div class="header__center">
+        {{ header_logo }}
+      </div>
+      <div class="header__right">
+        {%- unless logo_position == 'center' and navigation_position == 'below' and style == 'inline' -%}
+          {{ search_icon }}
+        {%- endunless -%}
+
+        {%- if shop.customer_accounts_enabled -%}
+          {{ account_icon }}
+        {%- endif -%}
+
+        {{ cart_icon }}
+      </div>
+      {%- if navigation_position == 'below' and style == 'inline' -%}
+        <div class="header__below-left">
+          <!-- logo menu needs to always be somewhre else -->
+          {%- if logo_position == 'left' -%}
+            {%- if secondary_menu_valid -%}
+              {{ burger }}
+            {%- endif -%}
+
+            {{ nav }}
+          {%- else -%}
+            {{ filler }}
+          {%- endif -%}
+        </div>
+        <div class="header__below-center">
+          {%- if logo_position == 'center' -%}
+            {{ nav }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="header__bottom-fullwidth">
+        {% render 'navigation' with menu: secondary_links %}
+      </div>
+      {% render 'header-quick-search' %}
+      {% render 'quick-cart' %}
+    </div>
+
+    <div class="no-js-menu no-js-menu--desktop">
+      {% render 'no-js-navmenu' with menu: menu, secondary_menu: secondary_menu %}
+    </div>
+
+    {% render 'drawer-menu' with menu: menu, secondary_menu: secondary_menu %}
+  </header>
+</div>
+
+{% style %}
+  {% if transparent_home %}
+    .template-index #main {
+      margin-top: calc(var(--height-header) * -1);
+    }
+
+    .template-index #main .offset-section:first-child .slideshow__content-inner,
+    .template-index #main .offset-section:first-child .video-hero__content-inner {
+      padding-top: calc(var(--height-header) - var(--space-outer));
+    }
+  {% endif %}
+{% endstyle %}
+   
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "header__outer-wrapper",
+  "settings": [
+    {
+      "id": "menu",
+      "type": "link_list",
+      "label": "t:sections.header.settings.menu.label",
+      "default": "main-menu"
+    },
+    {
+      "id": "secondary_menu",
+      "type": "link_list",
+      "label": "t:sections.header.settings.secondary_menu.label"
+    }
+  ]
+}
+{% endschema %}

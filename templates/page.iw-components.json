@@ -1,0 +1,168 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "block_cta_repeater_37cy8g": {
+      "type": "block-cta-repeater",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "basic_content_MVTnC8": {
+      "type": "basic-content",
+      "blocks": {
+        "heading_8AAzhh": {
+          "type": "heading",
+          "settings": {
+            "title_tag": "h2",
+            "title_style": "heading",
+            "title_text_colour": "text-current",
+            "title_align": "text-left",
+            "heading": "Basic Content Heading!!!"
+          }
+        },
+        "text_EHqf8W": {
+          "type": "text",
+          "settings": {
+            "alignment": "text-left",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel posuere leo. Ut rhoncus auctor odio vitae placerat. Proin placerat nec turpis a finibus. Donec at aliquam orci. Donec id augue suscipit, interdum turpis sed, pellentesque massa. Mauris ut urna non tellus venenatis egestas id vel eros. Aliquam eget sem sed tellus sagittis placerat. Sed sagittis eros et ante tincidunt consectetur. Nulla facilisi. Ut ultricies placerat ipsum id scelerisque. Ut tortor metus, consectetur ut velit id, efficitur viverra lectus. Nullam ornare, neque in faucibus hendrerit, sem arcu luctus nibh, eget lacinia nulla leo ut mauris.<\/p><p>Maecenas sollicitudin diam ut ante aliquet facilisis. Aenean sit amet viverra ipsum. Ut consectetur, leo malesuada dictum tincidunt, velit ipsum scelerisque sapien, vitae interdum nisi arcu quis est. Fusce interdum, ante sed placerat rutrum, ante ipsum sagittis lacus, at lacinia velit purus at lectus. Nunc vitae elementum nulla, sit amet feugiat ante. Donec imperdiet, metus a interdum facilisis, leo est pharetra neque, et pretium velit nisi at neque. Proin in ipsum quis libero viverra lacinia a non mi. Sed vel quam vel ligula tristique tincidunt. Praesent a odio magna. Morbi rhoncus est non egestas ullamcorper. Nam ultricies nisi in orci varius mattis at in quam. Integer interdum diam lacus, eu venenatis magna suscipit et. Nulla turpis ipsum, euismod et ex eu, commodo lacinia ex. Fusce posuere leo egestas, varius felis non, iaculis purus.<\/p><p>Mauris scelerisque semper cursus. Integer at libero pellentesque, laoreet neque non, sollicitudin quam. Sed ut leo aliquam ante molestie sodales. Morbi consectetur, odio eget feugiat pulvinar, purus nulla suscipit justo, ut laoreet eros tortor id massa. Etiam mattis vestibulum leo, vel pharetra libero cursus in. Curabitur tincidunt lacus vitae felis auctor sagittis. Etiam aliquam gravida mauris sit amet tincidunt.<\/p><p>Cras mollis ultricies enim, nec maximus turpis molestie et. Nam metus nisi, pellentesque eget neque id, vestibulum aliquet est. Pellentesque convallis libero non sem pharetra fermentum. Suspendisse fringilla ac purus eget bibendum. Nullam auctor, orci vel imperdiet pharetra, purus urna condimentum quam, a blandit nibh ipsum nec diam. Proin consequat sit amet arcu sed feugiat. Curabitur euismod sem eu quam imperdiet, sit amet tempor orci porta. Donec suscipit ante eu nulla vehicula imperdiet. Phasellus ornare gravida velit, ac semper mi tristique a. Praesent laoreet libero at est pulvinar bibendum. Fusce sed convallis ante. Nulla quis tempus ligula, non viverra velit.<\/p><p>Vestibulum erat felis, elementum in imperdiet congue, molestie nec nibh. Donec congue nisl eget lorem ornare luctus. Curabitur dapibus risus sed volutpat commodo. Sed faucibus in sem ac tristique. Aenean finibus, dolor vel lacinia fermentum, elit tortor blandit risus, sit amet convallis est felis sit amet odio. Quisque varius at libero porttitor pellentesque. Quisque vehicula, felis ornare posuere accumsan, dolor nisi consequat massa, malesuada luctus sapien nisi nec nulla. Duis eu diam sed odio scelerisque iaculis. Curabitur imperdiet magna vitae maximus fringilla. Praesent tincidunt massa sit amet pretium gravida.<\/p>"
+          }
+        },
+        "image_UyKC77": {
+          "type": "image",
+          "settings": {
+            "image_icon": false,
+            "image_object": "shopify:\/\/shop_images\/a662_roomshot_audley-mineral.jpg",
+            "link": "",
+            "target": false
+          }
+        },
+        "button_L8RAy6": {
+          "type": "button",
+          "settings": {
+            "button_style": "black",
+            "link": "\/",
+            "text": "Homepage",
+            "target": false,
+            "additional_heading": "",
+            "additional_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8AAzhh",
+        "text_EHqf8W",
+        "image_UyKC77",
+        "button_L8RAy6"
+      ],
+      "settings": {
+        "section_id": "",
+        "style": "default",
+        "spacing": "default"
+      }
+    },
+    "basic_content_table_68jcUU": {
+      "type": "basic-content-table",
+      "blocks": {
+        "row_JHecii": {
+          "type": "row",
+          "settings": {
+            "is_header_row": true,
+            "heading": "Header One",
+            "column_2": "Header Two",
+            "column_3": "Header Three",
+            "column_4": "Header Four",
+            "column_5": "Header Five",
+            "column_6": ""
+          }
+        },
+        "row_6Er6KW": {
+          "type": "row",
+          "settings": {
+            "is_header_row": false,
+            "heading": "Value One",
+            "column_2": "Value Two",
+            "column_3": "Value Three",
+            "column_4": "Value Four",
+            "column_5": "",
+            "column_6": ""
+          }
+        },
+        "row_KRaVrA": {
+          "type": "row",
+          "settings": {
+            "is_header_row": false,
+            "heading": "Another One",
+            "column_2": "Another Two",
+            "column_3": "Another Three",
+            "column_4": "Another Four",
+            "column_5": "",
+            "column_6": ""
+          }
+        },
+        "row_7BNtWW": {
+          "type": "row",
+          "settings": {
+            "is_header_row": false,
+            "heading": "Final One",
+            "column_2": "Final Two",
+            "column_3": "Final Three",
+            "column_4": "Final Four",
+            "column_5": "",
+            "column_6": ""
+          }
+        },
+        "row_KCimqX": {
+          "type": "row",
+          "settings": {
+            "is_header_row": false,
+            "heading": "Hello",
+            "column_2": "FHdhdh",
+            "column_3": "",
+            "column_4": "",
+            "column_5": "",
+            "column_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_JHecii",
+        "row_6Er6KW",
+        "row_KRaVrA",
+        "row_7BNtWW",
+        "row_KCimqX"
+      ],
+      "settings": {
+        "style": "black"
+      }
+    },
+    "trustpilot_bar_pEYKrT": {
+      "type": "trustpilot-bar",
+      "settings": {
+      }
+    },
+    "trustpilot_carousel_CrjMec": {
+      "type": "trustpilot-carousel",
+      "settings": {
+      }
+    },
+    "trustpilot_grid_Ucigcx": {
+      "type": "trustpilot-grid",
+      "settings": {
+        "iframe_height": "800px"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "block_cta_repeater_37cy8g",
+    "basic_content_MVTnC8",
+    "basic_content_table_68jcUU",
+    "trustpilot_bar_pEYKrT",
+    "trustpilot_carousel_CrjMec",
+    "trustpilot_grid_Ucigcx"
+  ]
+}

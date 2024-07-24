@@ -1,0 +1,81 @@
+<footer class="bg-black text-white py-12 flex flex-col gap-12">
+   <div class="container">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-x-8 gap-y-4">
+         <p class="text-center">
+            Sign up for our latest offers, new range updates and inspiration.
+         </p>
+         <a href="#" class="button button-aqua !w-auto">
+            Join our mailing list
+         </a>
+      </div>
+   </div>
+   <div class="container-lg">
+      <ul class="grid grid-cols-1 mob-lg:grid-cols-2 md:!grid-cols-4 gap-x-4 gap-y-12">
+         {% for link in linklists['footer'].links %}
+            <li class="w-full flex flex-col gap-3 body-03">
+               <p class="body font-bold">
+                  {{ link.title }}
+               </p>
+               {% if link.links != blank %}
+                  <ul class="flex flex-col gap-2">
+                     {% for sublink in link.links %}
+                        <li class="">
+                           <a class="hover:text-aqua" href="{{ sublink.url }}">
+                              {{ sublink.title }}
+                           </a>
+                        </li>
+                     {% endfor %}
+                  </ul>
+               {% endif %}
+            </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="container">
+      <div class="flex flex-col gap-8">
+         <div class="text-center flex flex-col gap-2 body-03">
+            <p>
+               Carpetright Limited is registered in England at Nestware House, Purfleet Bypass, Purfleet, Essex, RM19 1TT. Telephone: 0330 333 3444
+            </p>
+            <p>
+               Registered number: 2294875.  VAT ID: GB810 2986 41. Copyright Carpetright. All rights reserved.
+            </p>
+            <p>
+               Credit subject to status, terms apply. Carpetright is a credit broker and not a lender. We are authorised and regulated by the Financial Conduct Authority (authorisation number: 729251).
+            </p>
+            <p>
+               Credit is provided by Novuna Personal Finance, a trading style of Mitsubishi HC Capital (UK) PLC authorised and regulated by the Financial Conduct Authority.
+            </p>
+         </div>
+         <div class="flex justify-evenly gap-8">
+            <ul class="flex flex-wrap gap-1">
+               {%- for type in shop.enabled_payment_types -%}
+                  <li class="">
+                     {{ type | payment_type_svg_tag: class: 'icon icon--full-color h-[24px] w-[38px]' }}
+                  </li>
+               {%- endfor -%}
+            </ul>
+            <div>
+               {% render 'socials' %}
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+
+{% schema %}
+{
+   "name": "Footer",
+   "settings": [
+      {
+         "type": "header",
+         "content": "Content"
+      },
+      {
+         "type": "text",
+         "id": "heading",
+         "label": "Heading"
+      }
+   ]
+}
+{% endschema %}

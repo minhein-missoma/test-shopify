@@ -1,0 +1,16 @@
+{% if image_object != blank %}
+   {% capture image_content %}
+      <img src="{{ image_object | img_url: '2000x' }}" alt="{{ image_object.alt }}" width="{{ image_object.width }}" height="{{ image_object.height }}" class="group-hover:scale-105 duration-300 mx-auto {% if mobile_image != blank %}hidden md:block{% endif %} {% if image_icon == true %}max-w-[200px]{% endif %}">
+      {% if mobile_image != blank %}
+         <img src="{{ mobile_image | img_url: '800x' }}" alt="{{ mobile_image.alt }}" width="{{ mobile_image.width }}" height="{{ mobile_image.height }}" class="group-hover:scale-105 duration-300 mx-auto md:hidden {% if image_icon == true %}max-w-[200px]{% endif %}">
+      {% endif %}
+   {% endcapture %}
+
+   {% if image_link != blank %}
+      <a href="{{ image_link }}" class="group overflow-hidden" {% if image_link_target == true %}target="_blank" rel="noopener noreferrer"{% endif %}>
+         {{ image_content }}
+      </a>
+   {% else %}
+      {{ image_content }}
+   {% endif %}
+{% endif %}

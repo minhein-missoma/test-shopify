@@ -1,0 +1,39 @@
+{% assign iframe_height = section.settings.iframe_height | default: '800px' %}
+
+<div class="vertical-spacing">
+   <div class="container">
+      <!-- TrustBox widget - Grid -->
+      <div class="trustpilot-widget" data-locale="en-GB" data-template-id="539adbd6dec7e10e686debee" data-businessunit-id="4be46cb9000064000508ec14" data-style-height="{{ iframe_height }}" data-style-width="100%" data-theme="light" data-stars="4,5" data-review-languages="en">
+         <a href="https://uk.trustpilot.com/review/www.carpetright.co.uk" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+      <!-- End TrustBox widget -->
+   </div>
+</div>
+
+{% schema %}
+{
+   "name": "Trustpilot Grid",
+   "settings": [
+      {
+         "type": "header",
+         "content": "Settings"
+      },
+      {
+         "type": "text",
+         "id": "iframe_height",
+         "label": "iFrame Height",
+         "default": "800px",
+         "info": "please ensure it has px at the end otherwise it will break the iframe"
+      },
+      {
+         "type": "header",
+         "content": "Content"
+      }
+   ],
+   "blocks": [],
+   "presets": [{
+      "name": "Trustpilot Grid",
+      "blocks": []
+   }]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+{% assign item_image_1 = block_settings.image_object_1 %}
+{% assign item_link_1 = block_settings.link_1  %}
+{% assign item_target_1 = block_settings.target_1  %}
+{% assign item_image_2 = block_settings.image_object_2 %}
+{% assign item_link_2 = block_settings.link_2  %}
+{% assign item_target_2 = block_settings.target_2  %}
+{% assign item_image_3 = block_settings.image_object_3 %}
+{% assign item_link_3 = block_settings.link_3  %}
+{% assign item_target_3 = block_settings.target_3  %}
+{% assign item_image_4 = block_settings.image_object_4 %}
+{% assign item_link_4 = block_settings.link_4  %}
+{% assign item_target_4 = block_settings.target_4  %}
+{% assign item_image_5 = block_settings.image_object_5 %}
+{% assign item_link_5 = block_settings.link_5  %}
+{% assign item_target_5 = block_settings.target_5  %}
+{% assign justify_class = block_settings.alignment | default: 'justify-center'  %}
+
+{% if item_image_1 != blank or item_image_2 != blank or item_image_3 != blank or item_image_4 != blank or item_image_5 != blank %}
+   <div class="flex flex-wrap gap-x-8 md:gap-x-12 xl:gap-x-20 gap-y-4 md:gap-y-8 {{ justify_class }} items-center">
+      {% if item_image_1 != blank %}
+         {% render "basic-image-grid-item",
+            item_image: item_image_1,
+            item_link: item_link_1,
+            item_target: item_target_1
+         %}
+      {% endif %}
+      {% if item_image_2 != blank %}
+         {% render "basic-image-grid-item",
+            item_image: item_image_2,
+            item_link: item_link_2,
+            item_target: item_target_2
+         %}
+      {% endif %}
+      {% if item_image_3 != blank %}
+         {% render "basic-image-grid-item",
+            item_image: item_image_3,
+            item_link: item_link_3,
+            item_target: item_target_3
+         %}
+      {% endif %}
+      {% if item_image_4 != blank %}
+         {% render "basic-image-grid-item",
+            item_image: item_image_4,
+            item_link: item_link_4,
+            item_target: item_target_4
+         %}
+      {% endif %}
+      {% if item_image_5 != blank %}
+         {% render "basic-image-grid-item",
+            item_image: item_image_5,
+            item_link: item_link_5,
+            item_target: item_target_5
+         %}
+      {% endif %}
+   </div>
+{% endif %}

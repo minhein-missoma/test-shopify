@@ -1,0 +1,32 @@
+{% assign colours = 'bg-black, bg-black-light, bg-black-dark, bg-white,, bg-aqua, bg-aqua-light, bg-aqua-dark, bg-grey, bg-offwhite' | split: ', ' %}
+
+<div class="vertical-spacing">
+   <div class="container">
+      {% render 'heading-and-text', heading: 'Colours', body: 'All the colours that are accessible on the site.' %}
+      <div class="flex flex-wrap -mx-4">
+         {% for colour in colours %}
+            {% assign colorName = colour | replace: 'bg-bg', 'background' | remove: 'bg-' | remove: '-ta' | replace: '-', ' ' | capitalize  %}
+
+            <div class="flex w-full items-center sm:w-1/2 md:w-1/3 lg:w-1/5 p-4">
+            <div class="rounded-full border border-black w-20 h-20 {{ colour }}"></div>
+               <p class="pl-4 body-01">
+                  {{ colorName }}
+               </p>
+            </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+
+{% if false %}
+   {%- comment -%}These are only needed to ensure these classes have been referenced so they will be compiled{%- endcomment -%}
+   <div class="bg-black"></div>
+   <div class="bg-black-light"></div>
+   <div class="bg-black-dark"></div>
+   <div class="bg-white"></div>
+   <div class="bg-aqua"></div>
+   <div class="bg-aqua-light"></div>
+   <div class="bg-aqua-dark"></div>
+   <div class="bg-grey"></div>
+   <div class="bg-offwhite"></div>
+{% endif %}

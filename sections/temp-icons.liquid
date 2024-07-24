@@ -1,0 +1,21 @@
+{% assign icons = 'heart, location-pin, circle-question, user, logo-teal, search, shopping-bag, tiktok, facebook, instagram, twitter, youtube, linkedin' | split: ", " %}
+
+<div class="vertical-padding bg-offwhite">
+   <div class="container">
+      <div class="">
+         {% render 'heading-and-text', heading: 'Icons' %}
+         <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4">
+            {% for icon in icons %}
+               <div class="flex flex-col gap-2">
+                  <div class="flex justify-center items-center w-12 h-12 mx-auto">
+                     {% render 'icons', icon: icon, class: 'w-full h-full duration-300 hover:text-aqua' %}
+                  </div>
+                  <p class="body-03 text-center">
+                     {{ icon }}
+                  </p>
+               </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</div>

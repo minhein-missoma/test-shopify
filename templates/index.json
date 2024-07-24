@@ -1,0 +1,130 @@
+{
+  "sections": {
+    "basic_component_a4YdV7": {
+      "type": "basic-component",
+      "disabled": true,
+      "settings": {
+        "heading": ""
+      }
+    },
+    "homepage_tiles_3Y3rKL": {
+      "type": "homepage-tiles",
+      "settings": {
+        "heading": "Hello World! Test",
+        "mobile_heading": "Hello Mobile"
+      }
+    },
+    "trustpilot_summary_n7jtp8": {
+      "type": "trustpilot-summary",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "block_cta_repeater_9nG49m": {
+      "type": "block-cta-repeater",
+      "blocks": {
+        "cta_NUzKtF": {
+          "type": "cta",
+          "settings": {
+            "cta_link": "\/",
+            "cta_text": "Find out more",
+            "cta_target": false,
+            "icon": "shopify:\/\/shop_images\/ifc-icon.webp",
+            "heading": "Finance Options from £10.50",
+            "blurb": "Spread the cost up to 5 years with our Afloordable finance options. No deposit required."
+          }
+        },
+        "cta_YWErKU": {
+          "type": "cta",
+          "settings": {
+            "cta_link": "\/",
+            "cta_text": "Visualise your flooring now",
+            "cta_target": false,
+            "icon": "shopify:\/\/shop_images\/services-visualiser-icon-3.png",
+            "heading": "Try our Flooring Visualiser",
+            "blurb": "See what new flooring could look like in your own home."
+          }
+        },
+        "cta_tUADD6": {
+          "type": "cta",
+          "settings": {
+            "cta_link": "\/",
+            "cta_text": "Find out more",
+            "cta_target": false,
+            "icon": "shopify:\/\/shop_images\/price-promise-icon.webp",
+            "heading": "Carpetright price promise",
+            "blurb": "Never beaten on price. You won't find it cheaper."
+          }
+        }
+      },
+      "block_order": [
+        "cta_NUzKtF",
+        "cta_YWErKU",
+        "cta_tUADD6"
+      ],
+      "settings": {
+        "cta_colour": "button-black"
+      }
+    },
+    "block_cta_repeater_4pdDUN": {
+      "type": "block-cta-repeater",
+      "blocks": {
+        "cta_V3kBFF": {
+          "type": "cta",
+          "settings": {
+            "cta_link": "tel:0330 333 3444",
+            "cta_text": "Call us now on 0330 333 3444",
+            "cta_target": false,
+            "heading": "",
+            "blurb": ""
+          }
+        },
+        "cta_rYegXn": {
+          "type": "cta",
+          "settings": {
+            "cta_link": "\/",
+            "cta_text": "Find your local store",
+            "cta_target": false,
+            "heading": "",
+            "blurb": ""
+          }
+        }
+      },
+      "block_order": [
+        "cta_V3kBFF",
+        "cta_rYegXn"
+      ],
+      "settings": {
+        "cta_colour": "button-aqua"
+      }
+    },
+    "collection_grid_qRwEqX": {
+      "type": "collection-grid",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "inspiration_hub_preview_P3KWVy": {
+      "type": "inspiration-hub-preview",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "image_repeater_rVXkzg": {
+      "type": "image-repeater",
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "basic_component_a4YdV7",
+    "homepage_tiles_3Y3rKL",
+    "trustpilot_summary_n7jtp8",
+    "block_cta_repeater_9nG49m",
+    "block_cta_repeater_4pdDUN",
+    "collection_grid_qRwEqX",
+    "inspiration_hub_preview_P3KWVy",
+    "image_repeater_rVXkzg"
+  ]
+}

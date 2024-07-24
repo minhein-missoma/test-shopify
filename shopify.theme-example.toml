@@ -1,0 +1,13 @@
+[environments.dev]
+store = "carpetrightuk-dev.myshopify.com"
+password = "shptka_password"
+theme = "123456789012"
+path = "."
+allow-live = true
+
+[environments.live]
+store = "carpetrightuk-dev.myshopify.com"
+password = "shptka_password"
+theme = "123456789012"
+path = "."
+allow-live = true

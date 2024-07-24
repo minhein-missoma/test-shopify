@@ -1,0 +1,145 @@
+{% if section.blocks != blank %}
+   {% case section.settings.style %}
+      {% when 'black' %}
+         {% assign table_class = 'table-black' %}
+      {% else %}
+         {% assign table_class = 'table-yellow' %}
+   {% endcase %}
+
+   <div class="vertical-spacing">
+      <div class="container">
+         <table class="table {{ table_class }}">
+            <tbody>
+               {% for block in section.blocks %}
+                  {% if block.settings.is_header_row == true %}
+                     {% assign tag = "th" %}
+                  {% else %}
+                     {% assign tag = "td" %}
+                  {% endif %}
+                  <tr>
+                     {% if block.settings.heading != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.heading }}
+                        </{{ tag }}>
+                     {% endif %}
+                     {% if block.settings.column_2 != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.column_2 }}
+                        </{{ tag }}>
+                     {% endif %}
+                     {% if block.settings.column_3 != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.column_3 }}
+                        </{{ tag }}>
+                     {% endif %}
+                     {% if block.settings.column_4 != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.column_4 }}
+                        </{{ tag }}>
+                     {% endif %}
+                     {% if block.settings.column_5 != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.column_5 }}
+                        </{{ tag }}>
+                     {% endif %}
+                     {% if block.settings.column_6 != blank %}
+                        <{{ tag }}>
+                           {{ block.settings.column_6 }}
+                        </{{ tag }}>
+                     {% endif %}
+                  </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+   </div>
+{% endif %}
+
+{% schema %}
+{
+   "name": "Basic Content: Table",
+   "settings": [
+      {
+         "type": "header",
+         "content": "Settings"
+      },
+      {
+         "type": "select",
+         "id": "style",
+         "label": "Style",
+         "options": [
+            {
+               "value": "default",
+               "label": "Aqua (Default)"
+            },
+            {
+               "value": "black",
+               "label": "Black"
+            }
+         ],
+         "default": "default"
+      },
+      {
+         "type": "header",
+         "content": "Content"
+      }
+   ],
+   "blocks": [
+      {
+         "type": "row",
+         "name": "Row",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "checkbox",
+               "id": "is_header_row",
+               "label": "Is Header Row?",
+               "info": "Set to true if it is a header row",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Content"
+            },
+            {
+               "type": "textarea",
+               "id": "heading",
+               "label": "Column One"
+            },
+            {
+               "type": "textarea",
+               "id": "column_2",
+               "label": "Column Two"
+            },
+            {
+               "type": "textarea",
+               "id": "column_3",
+               "label": "Column Three"
+            },
+            {
+               "type": "textarea",
+               "id": "column_4",
+               "label": "Column Four"
+            },
+            {
+               "type": "textarea",
+               "id": "column_5",
+               "label": "Column Five"
+            },
+            {
+               "type": "textarea",
+               "id": "column_6",
+               "label": "Column Six"
+            }
+         ]
+      }
+   ],
+   "presets": [{
+      "name": "Basic Content: Table",
+      "blocks": []
+   }]
+}
+{% endschema %}

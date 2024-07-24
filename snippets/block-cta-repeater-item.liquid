@@ -1,0 +1,38 @@
+{% assign cta_link = cta.cta_link %}
+{% assign cta_text = cta.cta_text | default: 'Click Here' %}
+{% assign cta_target = cta.cta_target %}
+{% assign icon = cta.icon %}
+{% assign heading = cta.heading %}
+{% assign blurb = cta.blurb %}
+{% assign cta_colour = cta_colour | default: 'button-black' %}
+
+<div class="flex flex-col gap-4 {{ item_width_classes }} justify-between px-4">
+   {% if heading != blank or blurb != blank or icon != blank %}
+      <div class="flex flex-col gap-2">
+         <div class="flex md:flex-col xl:flex-row gap-2 items-center md:items-start xl:items-center">
+            {% if icon != blank %}
+               <div class="max-w-12 max-h-12">
+                  <img src="{{ icon | img_url: '80x' }}" alt="">
+               </div>
+            {% endif %}
+            {% if heading != blank %}
+               <p class="heading-04">
+                  {{ heading }}
+               </p>
+            {% endif %}
+         </div>
+         {% if blurb != blank %}
+            <p class="body-03">
+               {{ blurb }}
+            </p>
+         {% endif %}
+      </div>
+   {% endif %}
+   {% if cta_link != blank %}
+      <div>
+         <a href="{{ cta_link }}" class="button {{ cta_colour }}" {% if cta_target %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            {{ cta_text }}
+         </a>
+      </div>
+   {% endif %}
+</div>

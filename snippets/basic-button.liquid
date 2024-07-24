@@ -1,0 +1,51 @@
+{% assign button_link = button_settings.link %}
+{% assign button_text = button_settings.text | default: 'Click Here' %}
+{% assign button_target = button_settings.target | default: false %}
+{% assign button_style = button_settings.button_style | default: 'black' %}
+{% assign button_additional_heading = button_settings.additional_heading %}
+{% assign button_additional_content_style = button_settings.additional_style %}
+
+{% case button_style %}
+   {% when 'black' %}
+      {% assign button_class = 'button-black' %}
+   {% else %}
+      {% assign button_class = 'button-aqua' %}
+{% endcase %}
+
+{% if button_additional_heading != blank %}
+   {% assign additional_content_base_classes = 'py-4 px-6' %}
+   {% case button_additional_content_style %}
+      {% when 'grey-light' %}
+         {% assign additional_content_style_classes = 'bg-grey-light text-black' %}
+      {% when 'frost' %}
+         {% assign additional_content_style_classes = 'bg-frost text-black' %}
+      {% when 'blue' %}
+         {% assign additional_content_style_classes = 'bg-blue text-white' %}
+      {% when 'green' %}
+         {% assign additional_content_style_classes = 'bg-green text-white' %}
+      {% when 'charcoal' %}
+         {% assign additional_content_style_classes = 'bg-charcoal text-white' %}
+      {% else %}
+         {% assign additional_content_style_classes = 'text-black' %}
+         {% assign additional_content_base_classes = '' %}
+   {% endcase %}
+{% endif %}
+
+{% capture button_content %}
+   <a href="{{ button_link }}" class="button {{ button_class }} {% if button_additional_heading == blank %}mx-auto{% endif %}" {% if button_target == true %}target="_blank" rel="noopener noreferrer"{% endif %}>
+      {{ button_text }}
+   </a>
+{% endcapture %}
+
+{% if button_link != blank %}
+   {% if button_additional_heading != blank %}
+      <div class="flex flex-col sm:flex-row justify-evenly items-center gap-x-8 gap-y-4 {{ additional_content_base_classes }} {{ additional_content_style_classes }}">
+         <h2 class="heading-05">
+            {{ button_additional_heading }}
+         </h2>
+         {{ button_content }}
+      </div>
+   {% else %}
+      {{ button_content }}
+   {% endif %}
+{% endif %}

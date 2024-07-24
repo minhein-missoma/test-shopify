@@ -1,0 +1,324 @@
+html {
+   @apply body text-black bg-white relative;
+
+   font-size: 16px;
+   scroll-behavior: smooth;
+}
+
+a,
+button {
+   @apply duration-300;
+}
+
+b,
+strong {
+   @apply font-bold;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+   @apply hidden;
+}
+
+.safari-border-radius-fix {
+   -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.screen-reader-only {
+   @apply sr-only;
+}
+
+/* Spacing */
+.container-base {
+   @apply px-4 md:px-8 lg:px-8 mx-auto w-full;
+}
+
+.container {
+   @apply max-w-container container-base;
+}
+
+.container-lg {
+   @apply max-w-container-lg container-base lg:px-8;
+}
+
+.container-sm {
+   @apply max-w-container-sm container-base;
+}
+
+.container-xs {
+   @apply max-w-container-xs container-base;
+}
+
+.vertical-spacing {
+   @apply my-16 md:my-28;
+}
+
+.vertical-spacing-sm {
+   @apply mt-12 mb-16;
+}
+
+.vertical-padding {
+   @apply py-16 md:py-28;
+}
+
+.vertical-padding-sm {
+   @apply pt-12 pb-16;
+}
+
+/* Typography */
+.heading-base {
+   @apply font-heading leading-tight font-bold;
+}
+
+.heading-01 {
+   @apply heading-base text-58 md:text-75;
+}
+
+.heading-02 {
+   @apply heading-base text-36 md:text-58;
+}
+
+.heading-03 {
+   @apply heading-base text-26 md:text-36;
+}
+
+.heading-04 {
+   @apply heading-base text-22 md:text-26;
+}
+
+.heading-05 {
+   @apply heading-base text-20 md:text-22;
+}
+
+.heading-06 {
+   @apply heading-base text-16 md:text-18;
+}
+
+.body-base {
+   @apply font-body leading-normal font-normal;
+}
+
+.body-01 {
+   @apply body-base text-16 md:text-18;
+}
+
+.body-02 {
+   @apply body-base text-14 md:text-16;
+} 
+
+.body-03 {
+   @apply body-base text-12 md:text-14;
+}
+
+.body-04 {
+   @apply body-base text-10 md:text-12;
+}
+
+.heading {
+   @apply heading-03;
+}
+
+.body {
+   @apply body-02;
+}
+
+/* Prose */
+.prose,
+.prose-sm,
+.prose .metafield-rich_text_field {
+   @apply text-current body max-w-none flex flex-col gap-5;
+}
+
+.prose-sm {
+   @apply gap-2 body-03;
+}
+
+.prose a {
+   @apply link;
+}
+
+.prose h1,
+.prose h2 {
+   @apply heading-04;
+}
+
+.prose h3 {
+   @apply heading-05;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+   @apply heading-06;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+   @apply mt-2;
+}
+
+.prose img {
+   @apply mr-auto my-2;
+}
+
+.prose *,
+.prose-sm * {
+   @apply my-0;
+}
+
+.prose h1:not(:first-child),
+.prose h2:not(:first-child),
+.prose h3:not(:first-child),
+.prose h4:not(:first-child),
+.prose h5:not(:first-child),
+.prose h6:not(:first-child) {
+   @apply mt-4;
+}
+
+.prose--contact-block h2,
+.prose--contact-block h3 {
+   @apply font-bold;
+}
+
+.prose--contact-block {
+   @apply body-03;
+}
+
+.prose--contact-block p {
+   @apply min-h-[16px];
+}
+
+.prose ul,
+.prose ol {
+   @apply flex flex-col gap-3;
+}
+
+.prose-sm ul,
+.prose-sm ol {
+   @apply flex flex-col gap-1;
+}
+
+.prose-sm ul,
+.prose-sm ol {
+   @apply flex flex-col gap-1;
+}
+
+.prose-sm ul {
+   @apply list-disc;
+}
+
+.prose :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *))::marker {
+   @apply text-current;
+}
+
+.prose-sm :where(ul>li):not(:where([class~=not-prose],[class~=not-prose] *)) {
+   @apply pl-0;
+}
+
+.prose.text-center ul li {
+   @apply mx-auto;
+}
+
+.prose-blog {
+   @apply gap-6;
+}
+
+.prose-blog-legacy {
+   @apply prose prose-blog text-center;
+}
+
+.prose-blog .button-blog {
+   @apply button button-black no-underline hover:text-white;
+}
+
+.prose-blog a.button-link {
+   @apply button button-black text-white no-underline my-8 mr-auto;
+}
+
+.prose-blog .visible-xs {
+   @apply md:hidden;
+}
+
+.prose-blog .hidden-xs {
+   @apply hidden md:block;
+}
+
+/* Button */
+.button {
+   @apply inline-block w-full text-14 md:text-16 font-medium text-center px-8 sm:px-10 py-2.5 rounded-lg duration-300 cursor-pointer disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.button-black-base {
+   @apply bg-black text-white;
+}
+
+.button-black {
+   @apply button-black-base hover:bg-black-light;
+}
+
+.button-red-base {
+   @apply bg-red text-white;
+}
+
+.button-red-dark {
+   @apply button-red-base hover:bg-red-dark;
+}
+
+.button-red-light {
+   @apply button-red-base hover:bg-red-light;
+}
+
+.button-aqua-base {
+   @apply bg-aqua text-white;
+}
+
+.button-aqua-dark {
+   @apply button-aqua-base hover:bg-aqua-dark;
+}
+
+.button-aqua-light {
+   @apply button-aqua-base hover:bg-aqua-light hover:text-aqua-dark;
+}
+
+.button-aqua {
+   @apply button-aqua-dark;
+}
+
+.link {
+   @apply text-black hover:text-aqua underline underline-offset-2;
+}
+
+/* Header */
+.header-icon-link__anchor {
+   @apply flex gap-1.5 items-center hover:text-aqua;
+}
+
+.header-icon-link__icon {
+   @apply w-6 h-6 flex justify-center items-center;
+}
+
+.header-icon-link__icon-svg {
+   @apply w-full h-full;
+}
+
+/* Tables */
+.table {
+   @apply bg-offwhite w-full;
+}
+
+.table td,
+.table th {
+   @apply border border-black p-3;
+}
+
+.table th {
+   @apply py-4;
+}
+
+.table th {
+   @apply bg-aqua text-black whitespace-nowrap;
+}
+
+.table.table-black th {
+   @apply bg-black text-white border-black-light;
+}

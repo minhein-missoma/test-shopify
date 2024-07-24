@@ -1,0 +1,6 @@
+<span class="relative">
+   {% render 'icons', icon: 'shopping-bag', class: 'w-5' %}
+   <div class="absolute -top-2.5 -right-2.5 w-5 h-5 bg-black-dark z-10 flex items-center justify-center text-12 border border-white rounded-full" data-js-cart-indicator>
+      <span data-js-cart-count>{{ cart.item_count }}</span>
+   </div>
+</span>

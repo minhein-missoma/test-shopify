@@ -1,0 +1,11 @@
+{% capture inner_content %}
+   <img src="{{ item_image | img_url: '600x' }}" alt="{{ item_image.alt }}" width="{{ item_image.width }}" height="{{ item_image.height }}" class="group-hover:scale-105 duration-300">
+{% endcapture %}
+
+{% if item_link != blank %}
+   <a href="{{ item_link }}" class="group" {% if item_target == true %}target="_blank" rel="noopener noreferrer"{% endif %}>
+      {{ inner_content }}
+   </a>
+{% else %}
+   {{ inner_content }}
+{% endif %}

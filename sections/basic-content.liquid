@@ -1,0 +1,643 @@
+{% case section.settings.spacing %}
+   {% when "small" %}
+      {% assign spacing_class = "vertical-spacing-sm" %}
+   {% when "small-bottom" %}
+      {% assign spacing_class = "vertical-spacing mb-6" %}
+   {% when "none" %}
+      {% assign spacing_class = "" %}
+   {% else %}
+      {% assign spacing_class = "vertical-spacing" %}
+{% endcase %}
+
+{% assign section_id = section.settings.section_id %}
+{% assign section_style = section.settings.style %}
+{% if section_style != blank and section_style != 'default' %}
+   {% assign section_style_classes = 'p-6' %}
+   {% case section_style %}
+      {% when 'light-grey' %}
+         {% assign section_style_classes = section_style_classes | append: ' bg-grey-light text-black' %}
+      {% when 'charcoal' %}
+         {% assign section_style_classes = section_style_classes | append: ' bg-charcoal text-white' %}        
+   {% endcase %}
+{% endif %}
+
+{% if section.blocks != blank %}
+   <div class="{{ spacing_class }}" {% if section_id != blank %}id="{{ section_id }}"{% endif %}>
+      <div class="container">
+         <div class="flex flex-col gap-6 {% if section_style_classes != blank %}{{ section_style_classes }}{% endif %}">
+            {% for block in section.blocks %}
+               {% if block.type == "heading" %}
+                  {% assign tag = block.settings.title_tag | default: "h2" %}
+                  {% assign styling = block.settings.title_style | default: "heading" %}
+                  {% assign alignment = block.settings.title_align | default: "text-center" %}
+                  {% assign heading = block.settings.heading %}
+                  {% assign title_text_colour = block.settings.title_text_colour | default: "text-current" %}
+   
+                  {% render "basic-heading",
+                     tag: tag,
+                     heading: heading,
+                     styling: styling,
+                     alignment: alignment,
+                     title_text_colour: title_text_colour,
+                  %}
+               {% endif %}
+   
+               {% if block.type == "text" %}
+                  {% assign alignment = block.settings.alignment | default: "text-center" %}
+                  {% assign content = block.settings.content %}
+   
+                  {% render "basic-text",
+                     content: content,
+                     alignment: alignment 
+                  %}
+               {% endif %}
+   
+               {% if block.type == "image" %}
+                  {% assign alignment = block.settings.alignment | default: "text-center" %}
+                  {% assign image_object = block.settings.image_object %}
+                  {% assign image_icon = block.settings.image_icon | default: false %}
+   
+                  {% render "basic-image",
+                     image_object: image_object,
+                     mobile_image: block.settings.mobile_image,
+                     alignment: alignment,
+                     image_link: block.settings.link,
+                     image_link_target: block.settings.target,
+                     image_icon: image_icon
+                  %}
+               {% endif %}
+   
+               {% if block.type == "image_grid" %}
+                  {% render "basic-image-grid",
+                     block_settings: block.settings,
+                  %}
+               {% endif %}
+   
+               {% if block.type == "button" %}
+                  {% render "basic-button",
+                     button_settings: block.settings,
+                  %}
+               {% endif %}
+   
+               {% if block.type == "embed" %}
+                  {% if block.settings.embed != blank %}
+                     <div>
+                        {{ block.settings.embed }}
+                     </div>
+                  {% endif %}
+               {% endif %}
+
+               {% if block.type == "hr" %}
+                  <hr class="text-grey">
+               {% endif %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+{% endif %}
+
+{% schema %}
+{
+   "name": "Basic Content",
+   "settings": [
+      {
+         "type": "header",
+         "content": "Settings"
+      },
+      {
+         "type": "text",
+         "id": "section_id",
+         "label": "Section ID",
+         "info": "Set a value here to add an id to the section. Make sure to use '-' rather than spaces."
+      },
+      {
+         "type": "select",
+         "id": "style",
+         "label": "Style",
+         "options": [
+            {
+               "value": "default",
+               "label": "Default"
+            },
+            {
+               "value": "light-grey",
+               "label": "Light Grey"
+            },
+            {
+               "value": "charcoal",
+               "label": "Charcoal"
+            }
+         ],
+         "default": "default"
+      },
+      {
+         "type": "select",
+         "id": "spacing",
+         "label": "Spacing",
+         "options": [
+            {
+               "value": "default",
+               "label": "Default"
+            },
+            {
+               "value": "small",
+               "label": "Small"
+            },
+            {
+               "value": "small-bottom",
+               "label": "Small Bottom"
+            },
+            {
+               "value": "none",
+               "label": "None"
+            }
+         ],
+         "default": "default"
+      },
+      {
+         "type": "header",
+         "content": "Content"
+      }
+   ],
+   "blocks": [
+      {
+         "type": "heading",
+         "name": "Heading",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "select",
+               "id": "title_tag",
+               "label": "Tag",
+               "info": "Select the title tag for the heading. Note: Best practice to only have one 'h1' tag on the page and to not skip any tags. ",
+               "options": [
+                  {
+                     "value": "h1",
+                     "label": "h1"
+                  },
+                  {
+                     "value": "h2",
+                     "label": "h2"
+                  },
+                  {
+                     "value": "h3",
+                     "label": "h3"
+                  },
+                  {
+                     "value": "h4",
+                     "label": "h4"
+                  },
+                  {
+                     "value": "h5",
+                     "label": "h5"
+                  },
+                  {
+                     "value": "h6",
+                     "label": "h6"
+                  },
+                  {
+                     "value": "p",
+                     "label": "p"
+                  }
+               ],
+               "default": "h2"
+            },
+            {
+               "type": "select",
+               "id": "title_style",
+               "label": "Style",
+               "info": "Choose the style of the text",
+               "options": [
+                  {
+                     "value": "heading-01",
+                     "label": "Heading - XL"
+                  },
+                  {
+                     "value": "heading-02",
+                     "label": "Heading - Large"
+                  },
+                  {
+                     "value": "heading",
+                     "label": "Heading - Standard"
+                  },
+                  {
+                     "value": "heading-04",
+                     "label": "Heading - Small"
+                  },
+                  {
+                     "value": "heading-05",
+                     "label": "Heading - XS"
+                  },
+                  {
+                     "value": "body",
+                     "label": "Body"
+                  }
+               ],
+               "default": "heading"
+            },
+            {
+               "type": "select",
+               "id": "title_text_colour",
+               "label": "Text Colour",
+               "options": [
+                  {
+                     "value": "text-black",
+                     "label": "Black"
+                  },
+                  {
+                     "value": "text-blue",
+                     "label": "Blue"
+                  },
+                  {
+                     "value": "text-white",
+                     "label": "White"
+                  },
+                  {
+                     "value": "text-current",
+                     "label": "Current"
+                  }
+               ],
+               "default": "text-current"
+            },
+            {
+               "type": "select",
+               "id": "title_align",
+               "label": "Align",
+               "info": "Set the alignment of the heading",
+               "options": [
+                  {
+                     "value": "text-left",
+                     "label": "Left"
+                  },
+                  {
+                     "value": "text-center",
+                     "label": "Center"
+                  },
+                  {
+                     "value": "text-right",
+                     "label": "Right"
+                  }
+               ],
+               "default": "text-center"
+            },
+            {
+               "type": "header",
+               "content": "Content"
+            },
+            {
+               "type": "text",
+               "id": "heading",
+               "label": "Heading"
+            }
+         ]
+      },
+      {
+         "type": "text",
+         "name": "Text",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "select",
+               "id": "alignment",
+               "label": "Align",
+               "info": "Set the alignment of the heading",
+               "options": [
+                  {
+                     "value": "text-left",
+                     "label": "Left"
+                  },
+                  {
+                     "value": "text-center",
+                     "label": "Center"
+                  },
+                  {
+                     "value": "text-right",
+                     "label": "Right"
+                  }
+               ],
+               "default": "text-center"
+            },
+            {
+               "type": "header",
+               "content": "Content"
+            },
+            {
+               "type": "richtext",
+               "id": "content",
+               "label": "Content"
+            }
+         ]
+      },
+      {
+         "type": "image",
+         "name": "Image",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "checkbox",
+               "id": "image_icon",
+               "label": "Image is Icon",
+               "info": "Setting to true will reduce the image size. Commonly used for icons rather than images",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Content"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object",
+               "label": "Image"
+            },
+            {
+               "type": "image_picker",
+               "id": "mobile_image",
+               "label": "Image (Mobile)"
+            },
+            {
+               "type": "url",
+               "id": "link",
+               "label": "Link"
+            },
+            {
+               "type": "checkbox",
+               "id": "target",
+               "label": "Open in new tab?",
+               "default": false
+            }
+         ]
+      },
+      {
+         "type": "image_grid",
+         "name": "Images Grid",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "select",
+               "id": "alignment",
+               "label": "Show Offer Bar",
+               "options": [
+                  {
+                     "value": "justify-center",
+                     "label": "Center"
+                  },
+                  {
+                     "value": "justify-start",
+                     "label": "Start"
+                  },
+                  {
+                     "value": "justify-evenly",
+                     "label": "Evenly"
+                  },
+                  {
+                     "value": "justify-between",
+                     "label": "Between"
+                  }
+               ],
+               "default": "justify-center",
+               "info": "Set the alignment of the images"
+            },
+            {
+               "type": "header",
+               "content": "Image One"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object_1",
+               "label": "Image (1)"
+            },
+            {
+               "type": "url",
+               "id": "link_1",
+               "label": "Link (1)"
+            },
+            {
+               "type": "checkbox",
+               "id": "target_1",
+               "label": "Open in new tab? (1)",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Image Two"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object_2",
+               "label": "Image (2)"
+            },
+            {
+               "type": "url",
+               "id": "link_2",
+               "label": "Link (2)"
+            },
+            {
+               "type": "checkbox",
+               "id": "target_2",
+               "label": "Open in new tab? (2)",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Image Three"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object_3",
+               "label": "Image (3)"
+            },
+            {
+               "type": "url",
+               "id": "link_3",
+               "label": "Link (3)"
+            },
+            {
+               "type": "checkbox",
+               "id": "target_3",
+               "label": "Open in new tab? (3)",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Image Four"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object_4",
+               "label": "Image (4)"
+            },
+            {
+               "type": "url",
+               "id": "link_4",
+               "label": "Link (4)"
+            },
+            {
+               "type": "checkbox",
+               "id": "target_4",
+               "label": "Open in new tab? (4)",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Image Five"
+            },
+            {
+               "type": "image_picker",
+               "id": "image_object_5",
+               "label": "Image (5)"
+            },
+            {
+               "type": "url",
+               "id": "link_5",
+               "label": "Link (5)"
+            },
+            {
+               "type": "checkbox",
+               "id": "target_5",
+               "label": "Open in new tab? (5)",
+               "default": false
+            }
+         ]
+      },
+      {
+         "type": "button",
+         "name": "Button",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "select",
+               "id": "button_style",
+               "label": "Button Style",
+               "options": [
+                  {
+                     "value": "black",
+                     "label": "Black"
+                  },
+                  {
+                     "value": "blue",
+                     "label": "Blue"
+                  },
+                  {
+                     "value": "orange",
+                     "label": "Orange"
+                  },
+                  {
+                     "value": "green",
+                     "label": "Green"
+                  }
+               ],
+               "default": "black"
+            },
+            {
+               "type": "header",
+               "content": "Button"
+            },
+            {
+               "type": "url",
+               "id": "link",
+               "label": "Link"
+            },
+            {
+               "type": "text",
+               "id": "text",
+               "label": "Text"
+            },
+            {
+               "type": "checkbox",
+               "id": "target",
+               "label": "Open in new tab?",
+               "default": false
+            },
+            {
+               "type": "header",
+               "content": "Additional Content"
+            },
+            {
+               "type": "paragraph",
+               "content": "By default, this component is only a button. You can convert it to a title & button block by adding a heading and assigning a background colour"
+            },
+            {
+               "type": "text",
+               "id": "additional_heading",
+               "label": "Additional Heading"
+            },
+            {
+               "type": "select",
+               "id": "additional_style",
+               "label": "Additional Style",
+               "options": [
+                  {
+                     "value": "grey-light",
+                     "label": "Light Grey"
+                  },
+                  {
+                     "value": "frost",
+                     "label": "Frost"
+                  },
+                  {
+                     "value": "blue",
+                     "label": "Blue"
+                  },
+                  {
+                     "value": "green",
+                     "label": "Green"
+                  },
+                  {
+                     "value": "charcoal",
+                     "label": "Charcoal"
+                  },
+                  {
+                     "value": "none",
+                     "label": "None"
+                  }
+               ],
+               "default": "none"
+            }
+         ]
+      },
+      {
+         "type": "embed",
+         "name": "Embed",
+         "settings": [
+            {
+               "type": "header",
+               "content": "Settings"
+            },
+            {
+               "type": "header",
+               "content": "Content"
+            },
+            {
+               "type": "liquid",
+               "id": "embed",
+               "label": "Embed"
+            }
+         ]
+      },
+      {
+         "type": "hr",
+         "name": "hr",
+         "settings": []
+      }
+   ],
+   "presets": [{
+      "name": "Basic Content",
+      "blocks": []
+   }]
+}
+{% endschema %}
